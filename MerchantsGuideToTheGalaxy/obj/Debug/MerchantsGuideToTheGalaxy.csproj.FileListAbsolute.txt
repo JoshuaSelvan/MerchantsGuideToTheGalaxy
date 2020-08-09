@@ -1,0 +1,2 @@
+C:\Users\Joshua\Source\Repos\MerchantsGuideToTheGalaxy\MerchantsGuideToTheGalaxy\obj\Debug\MerchantsGuideToTheGalaxy.csprojAssemblyReference.cache
+C:\Users\Joshua\Source\Repos\MerchantsGuideToTheGalaxy\MerchantsGuideToTheGalaxy\obj\Debug\MerchantsGuideToTheGalaxy.csproj.CoreCompileInputs.cache
