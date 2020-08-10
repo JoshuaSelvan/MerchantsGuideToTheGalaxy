@@ -1,24 +1,34 @@
 ﻿using System;
+using System.IO;
+
 namespace MerchantsGuideToTheGalaxy
 {
-    internl class FileReader
+    internal class FileReader
     {
 
-        var openFile;
-
+        
+        StreamReader inputReader = new StreamReader("TestInput.txt");
         public FileReader()
-        { }
-
+        { 
+        
+        }
 
 
         public string ReadLine()
         {
-            return "fudge"
+            if (inputReader.EndOfStream != null)
+                return inputReader.ReadLine();
+            else
+            {
+                CloseFile();
+                return "*";
+            }
         }
 
         public void CloseFile()
         {
-
+            inputReader.Close();
+            inputReader = null;
         }
     }
 }

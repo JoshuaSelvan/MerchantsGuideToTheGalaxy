@@ -11,20 +11,25 @@ namespace MerchantsGuideToTheGalaxy
         static void Main(string[] args)
         {
             Console.WriteLine("Hello Galaxy!");
-            Console.ReadLine();
+ 
 
             
             bool continueState = true;
+            string currentLine;
             //step 1: load file
             FileReader inputLoader = new FileReader();
             
             //step 2: for each line in file, deduce type and then process
             while (continueState = true)
             {
+                currentLine = inputLoader.ReadLine();
 
-                continueState = false;
+                if (currentLine == null)
+                    continueState = false;
+                else
+                    Console.WriteLine(currentLine);
             }
-
+            Console.ReadLine();
         }
     }
 }
