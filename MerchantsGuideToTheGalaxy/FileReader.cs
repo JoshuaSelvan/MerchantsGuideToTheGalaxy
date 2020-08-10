@@ -6,7 +6,7 @@ namespace MerchantsGuideToTheGalaxy
 
         var openFile;
 
-        public initialiseFileReader()
+        public FileReader()
         { }
 
 

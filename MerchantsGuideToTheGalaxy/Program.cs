@@ -17,11 +17,12 @@ namespace MerchantsGuideToTheGalaxy
             bool continueState = true;
             //step 1: load file
             FileReader inputLoader = new FileReader();
+            
             //step 2: for each line in file, deduce type and then process
             while (continueState = true)
             {
 
-
+                continueState = false;
             }
 
         }
