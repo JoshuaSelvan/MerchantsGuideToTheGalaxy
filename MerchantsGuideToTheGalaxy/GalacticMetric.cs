@@ -78,7 +78,11 @@ public class GalacticMetric
 					runningTotal = currentNumber - runningTotal;
 				}
 			}
-            else { Console.WriteLine("I dont understand whay you saying"); return; }
+            else 
+			{ 
+				Console.WriteLine("I dont understand whay you saying"); 
+				return; 
+			}
 
 		}
 
@@ -90,10 +94,49 @@ public class GalacticMetric
 	}
 
 	//fetch values from the dictionary to decode input and then roman stule calculation
-	public int calculateGalacticValue(string[] input)
+	public void calculateGalacticValue(string[] input)
 	{
 		Console.WriteLine("Calculate");
-		return 0;
+		//step 1:get the starting position of the input and ending position
+
+		int startingPoint = Array.IndexOf(input, "is") + 1;
+		int endingPoint = Array.IndexOf(input, "?") - 1;
+		
+		//step 2: calculate total of values in index range
+
+
+		int currentNumber = 0;
+		int previousNumber = 999999999;
+		int runningTotal = 0;
+		for (int i = startingPoint; i <= endingPoint - 1; i++)
+		{
+			if (checkMetricExists(input[i]) == true)
+			{
+				currentNumber = fetchMetricValue(input[i]);
+				if (currentNumber <= previousNumber)
+				{
+					previousNumber = currentNumber;
+					runningTotal += currentNumber;
+				}
+				else
+				{
+					runningTotal = currentNumber - runningTotal;
+				}
+			}
+			else 
+			{ 
+				Console.WriteLine("I dont understand whay you saying"); 
+				return; 
+			}
+
+		}
+
+		Console.WriteLine(runningTotal);
+
+		
+
+		return;
+		
 	}
 
 
@@ -108,7 +151,7 @@ public class GalacticMetric
 		else if (splitStatement.Contains<string>("is"))
 			deduceGalacticMetric(splitStatement);
 		else
-			Console.WriteLine("I dont know what yuo talking about");
+			Console.WriteLine("I dont know what you talking about");
 		return "fish";
 	
 
