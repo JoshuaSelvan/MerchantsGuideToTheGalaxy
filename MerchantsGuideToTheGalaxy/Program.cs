@@ -18,16 +18,20 @@ namespace MerchantsGuideToTheGalaxy
             string currentLine;
             //step 1: load file
             FileReader inputLoader = new FileReader();
-            
+            GalacticMetric galacticMetric = new GalacticMetric();
+
             //step 2: for each line in file, deduce type and then process
-            while (continueState = true)
+            while (continueState == true)
             {
                 currentLine = inputLoader.ReadLine();
 
                 if (currentLine == null)
                     continueState = false;
                 else
-                    Console.WriteLine(currentLine);
+                {
+                    galacticMetric.deduceInputType(currentLine);
+                    
+                }
             }
             Console.ReadLine();
         }
