@@ -25,7 +25,6 @@ public class GalacticMetric
 	//Add secondary galactic key which corresponds to roman key
 	public void updateGalacticMetric(string galactic, string roman)
 	{
-		Console.WriteLine("updating");
 		int value = GalaxyMetric[roman];
 		GalaxyMetric.Remove(roman);
 		GalaxyMetric.Add(galactic, value);
@@ -46,7 +45,6 @@ public class GalacticMetric
 	//Deduce new Galactic Metric number by subtracting known values from a chain input
 	public void deduceGalacticMetric(string[] input)
 	{
-		Console.WriteLine("deducing");
 
 		//step 1: get length of input
 		int length = input.Length;
@@ -80,7 +78,7 @@ public class GalacticMetric
 			}
             else 
 			{ 
-				Console.WriteLine("I dont understand whay you saying"); 
+				Console.WriteLine("I have no idea what you are talking about"); 
 				return; 
 			}
 
@@ -88,15 +86,15 @@ public class GalacticMetric
 
 
 		
-		int newValue = value - runningTotal;
+		int newValue = value + runningTotal;
 		//step 4: add result to dictionary
+		//Console.WriteLine("New value is: "+ newValue);
 		GalaxyMetric.Add(input[numeralsLength - 1], newValue);
 	}
 
 	//fetch values from the dictionary to decode input and then roman stule calculation
 	public void calculateGalacticValue(string[] input)
 	{
-		Console.WriteLine("Calculate");
 		//step 1:get the starting position of the input and ending position
 
 		int startingPoint = Array.IndexOf(input, "is") + 1;
@@ -108,10 +106,13 @@ public class GalacticMetric
 		int currentNumber = 0;
 		int previousNumber = 999999999;
 		int runningTotal = 0;
-		for (int i = startingPoint; i <= endingPoint - 1; i++)
+		string resultString = "";
+
+		for (int i = startingPoint; i <= endingPoint; i++)
 		{
 			if (checkMetricExists(input[i]) == true)
 			{
+				resultString += input[i] + " ";
 				currentNumber = fetchMetricValue(input[i]);
 				if (currentNumber <= previousNumber)
 				{
@@ -125,25 +126,23 @@ public class GalacticMetric
 			}
 			else 
 			{ 
-				Console.WriteLine("I dont understand whay you saying"); 
+				Console.WriteLine("I have no idea what you are talking about"); 
 				return; 
 			}
 
 		}
 
-		Console.WriteLine(runningTotal);
+		resultString += "is ";
 
-		
-
-		return;
-		
+		Console.WriteLine(resultString + runningTotal);
+		return;	
 	}
 
 
-	public string deduceInputType(string input)
+	public void deduceInputType(string input)
     {
 		string[] splitStatement = input.Split(' ');
-		Console.WriteLine(input);
+
 		if (splitStatement[1].Equals("is"))
 			updateGalacticMetric(splitStatement[0], splitStatement[2]);
 		else if (splitStatement[0].Equals("how") && (splitStatement[1].Equals("much") || splitStatement[1].Equals("many")) && splitStatement.Contains<string>("is"))
@@ -151,11 +150,6 @@ public class GalacticMetric
 		else if (splitStatement.Contains<string>("is"))
 			deduceGalacticMetric(splitStatement);
 		else
-			Console.WriteLine("I dont know what you talking about");
-		return "fish";
-	
-
+			Console.WriteLine("I have no idea what you are talking about");
 	}
-
-
 }
