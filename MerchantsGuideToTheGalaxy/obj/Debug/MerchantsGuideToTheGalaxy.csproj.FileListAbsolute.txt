@@ -1,8 +1,0 @@
-C:\Users\Joshua\Source\Repos\MerchantsGuideToTheGalaxy\MerchantsGuideToTheGalaxy\obj\Debug\MerchantsGuideToTheGalaxy.csprojAssemblyReference.cache
-C:\Users\Joshua\Source\Repos\MerchantsGuideToTheGalaxy\MerchantsGuideToTheGalaxy\obj\Debug\MerchantsGuideToTheGalaxy.csproj.CoreCompileInputs.cache
-C:\Users\Joshua\source\repos\MerchantsGuideToTheGalaxy\MerchantsGuideToTheGalaxy\bin\Debug\MerchantsGuideToTheGalaxy.exe.config
-C:\Users\Joshua\source\repos\MerchantsGuideToTheGalaxy\MerchantsGuideToTheGalaxy\bin\Debug\MerchantsGuideToTheGalaxy.exe
-C:\Users\Joshua\source\repos\MerchantsGuideToTheGalaxy\MerchantsGuideToTheGalaxy\bin\Debug\MerchantsGuideToTheGalaxy.pdb
-C:\Users\Joshua\source\repos\MerchantsGuideToTheGalaxy\MerchantsGuideToTheGalaxy\obj\Debug\MerchantsGuideToTheGalaxy.exe
-C:\Users\Joshua\source\repos\MerchantsGuideToTheGalaxy\MerchantsGuideToTheGalaxy\obj\Debug\MerchantsGuideToTheGalaxy.pdb
-C:\Users\Joshua\source\repos\MerchantsGuideToTheGalaxy\MerchantsGuideToTheGalaxy\bin\Debug\TestInput.txt
