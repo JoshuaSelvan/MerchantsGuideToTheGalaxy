@@ -18,12 +18,10 @@ public class GalacticMetric
 		GalaxyMetric.Add("L", 250);
 		GalaxyMetric.Add("D", 500);
 		GalaxyMetric.Add("M", 1000);
-
-		
 	}
 
 	//Add secondary galactic key which corresponds to roman key
-	public void updateGalacticMetric(string galactic, string roman)
+	private void updateGalacticMetric(string galactic, string roman)
 	{
 		int value = GalaxyMetric[roman];
 		GalaxyMetric.Remove(roman);
@@ -42,10 +40,10 @@ public class GalacticMetric
     {
 		return GalaxyMetric[numeral];
     }
-	//Deduce new Galactic Metric number by subtracting known values from a chain input
-	public void deduceGalacticMetric(string[] input)
-	{
 
+	//Deduce new Galactic Metric number by subtracting known values from a chain input
+	private void deduceGalacticMetric(string[] input)
+	{
 		//step 1: get length of input
 		int length = input.Length;
 
@@ -54,10 +52,7 @@ public class GalacticMetric
 		int numeralsLength = length - 3;
 		Int32.TryParse(input[length - 2], out value);
 
-
-		//step 3: subtract known values from total
-		
-	
+		//step 3: deal with all progressin types.
 		int currentNumber = 0;
 		int previousNumber = 999999999;
 		int runningTotal = 0;
@@ -84,54 +79,62 @@ public class GalacticMetric
 
 		}
 
-
-		
 		int newValue = value + runningTotal;
+		
 		//step 4: add result to dictionary
-		//Console.WriteLine("New value is: "+ newValue);
+			//test line ~ Console.WriteLine("New value is: "+ newValue);
 		GalaxyMetric.Add(input[numeralsLength - 1], newValue);
 	}
 
 	//fetch values from the dictionary to decode input and then roman stule calculation
-	public void calculateGalacticValue(string[] input)
+	private void calculateGalacticValue(string[] input)
 	{
 		//step 1:get the starting position of the input and ending position
-
 		int startingPoint = Array.IndexOf(input, "is") + 1;
 		int endingPoint = Array.IndexOf(input, "?") - 1;
+
 		
-		//step 2: calculate total of values in index range
-
-
+		//step 2:  calculate the number going backward to pick up on value dips (which should be negative)
 		int currentNumber = 0;
-		int previousNumber = 999999999;
+		int previousNumber = -999999999;
 		int runningTotal = 0;
+		bool subtractMode = false;
 		string resultString = "";
-
-		for (int i = startingPoint; i <= endingPoint; i++)
+		for (int i = endingPoint; i >= startingPoint; i--)
 		{
 			if (checkMetricExists(input[i]) == true)
 			{
-				resultString += input[i] + " ";
+				//resultString += input[i] + " ";
 				currentNumber = fetchMetricValue(input[i]);
-				if (currentNumber <= previousNumber)
+				if (((currentNumber >= previousNumber)&& subtractMode == false) || currentNumber > previousNumber)
 				{
 					previousNumber = currentNumber;
 					runningTotal += currentNumber;
+					subtractMode = false;
 				}
 				else
 				{
-					runningTotal = currentNumber - runningTotal;
+					
+					if (subtractMode == false)
+					{
+						runningTotal = runningTotal - currentNumber;
+						subtractMode = true;
+					}
+                    else
+                    {
+						if (previousNumber == currentNumber)
+							runningTotal = runningTotal - currentNumber;
+						else
+							runningTotal = runningTotal + currentNumber;
+					}
+					previousNumber = currentNumber;
 				}
 			}
-			else 
-			{ 
-				Console.WriteLine("I have no idea what you are talking about"); 
-				return; 
-			}
-
 		}
 
+		for (int i = startingPoint; i <= endingPoint; i++)
+			resultString += input[i] + " ";
+		
 		resultString += "is ";
 
 		Console.WriteLine(resultString + runningTotal);
